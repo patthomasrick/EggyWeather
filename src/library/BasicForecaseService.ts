@@ -1,20 +1,33 @@
-const ENDPOINT = "https://api.weather.gov/points/38.032,-78.5098";
+const API_POINTS = "https://api.weather.gov/points/";
+const USER_AGENT = "(eggy.wtf, patrick@patrickwthomas.net)";
 
-export async function fetchBasicForecast() {
-  // I prefer to use fetch, you can use use Axios as an alternative
-  const head_response = await fetch(ENDPOINT, {
+/**
+ *
+ * @param lat Lattiude
+ * @param lon Longitude
+ * @returns JSON data from weather.gov
+ */
+async function getForecastNode(lat: number, lon: number) {
+  const response = await fetch(`${API_POINTS}/${lat},${lon}`, {
     method: "get",
     headers: {
-      "User-Agent": "(eggy.wtf, patrick@patrickwthomas.net)",
+      "User-Agent": USER_AGENT,
     },
   });
 
-  if (!head_response.ok) {
-    const error = new Error(head_response.statusText);
+  // Error out if bad response.
+  if (!response.ok) {
+    const error = new Error(response.statusText);
     throw error;
   }
 
-  const head_json = await head_response.json();
+  // Get data as JSON.
+  return await response.json();
+}
+
+export async function fetchBasicForecast() {
+  // Get data as JSON.
+  const head_json = await getForecastNode(38.032, -78.5098);
 
   // Now get basic forecast.
   const basic_response = await fetch(head_json.properties.forecast, {
@@ -25,10 +38,12 @@ export async function fetchBasicForecast() {
     },
   });
 
+  // Error out if bad response.
   if (!basic_response.ok) {
     const error = new Error(basic_response.statusText);
     throw error;
   }
 
+  // Return data as JSON.
   return await basic_response.json();
 }

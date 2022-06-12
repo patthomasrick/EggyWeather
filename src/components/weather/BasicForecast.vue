@@ -1,6 +1,7 @@
 <script lang="ts">
-import { ref, computed } from "vue";
 import { fetchBasicForecast } from "../../library/BasicForecaseService";
+import * as dayjs from "dayjs";
+import PeriodCard from "@/components/weather/PeriodCard.vue";
 
 export default {
   name: "ForecastData",
@@ -12,6 +13,10 @@ export default {
       loading: true,
       error: null,
     };
+  },
+
+  components: {
+    PeriodCard,
   },
 
   mounted() {
@@ -31,6 +36,10 @@ export default {
           console.log(e);
         });
     },
+
+    formatDateTime(date_time) {
+      return dayjs(date_time).format("MMM D, h:mm a");
+    },
   },
 };
 </script>
@@ -38,7 +47,30 @@ export default {
 <template>
   <div>
     <h1 class="title">Forecast</h1>
-    <p v-if="!loading">Loaded. {{ weather_data.properties.periods[0] }}</p>
-    <p v-if="loading">Loading...</p>
+    <p v-if="!loading">
+      Last updated
+      {{ formatDateTime(weather_data.properties.updated) }}
+    </p>
+    <p v-else>Loading...</p>
+
+    <div v-if="!loading">
+      <PeriodCard
+        class="card"
+        v-for="period in weather_data.properties.periods"
+        :key="period.number"
+        :number="period.number"
+        :name="period.name"
+        :start_time="formatDateTime(period.startTime)"
+        :end_time="formatDateTime(period.endTime)"
+        :is_daytime="period.isDaytime"
+        :temperature="period.temperature"
+        :temperature_unit="period.temperatureUnit"
+        :wind_speed="period.windSpeed"
+        :wind_direction="period.windDirection"
+        :icon="period.icon"
+        :short_forecast="period.shortForecast"
+        :detailed_forecast="period.detailedForecast"
+      ></PeriodCard>
+    </div>
   </div>
 </template>

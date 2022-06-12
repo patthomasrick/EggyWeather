@@ -9,7 +9,7 @@ import NavBar from "@/components/NavBar.vue";
   <section class="hero is-primary">
     <div class="hero-body">
       <div class="container">
-        <p class="title">Eggy - Weather</p>
+        <p class="title">🥚 Eggy - Weather 🌤️</p>
         <p class="subtitle" v-if="subtitle">{{ subtitle }}</p>
       </div>
     </div>
@@ -24,4 +24,5 @@ import NavBar from "@/components/NavBar.vue";
 
 <style lang="scss">
 @import "../node_modules/bulma/bulma.sass";
+@import "../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
 </style>

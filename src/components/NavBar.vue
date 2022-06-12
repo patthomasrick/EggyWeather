@@ -1,4 +1,4 @@
-<script lang="ts">
+<script setup lang="ts">
 import { RouterLink } from "vue-router";
 </script>
 
@@ -29,6 +29,7 @@ import { RouterLink } from "vue-router";
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
         <RouterLink class="navbar-item" :to="'/'">Home</RouterLink>
+        <RouterLink class="navbar-item" :to="'/forecast'">Forecast</RouterLink>
       </div>
     </div>
   </nav>
