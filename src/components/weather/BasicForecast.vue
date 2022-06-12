@@ -1,7 +1,7 @@
 <script lang="ts">
 import { fetchBasicForecast } from "../../library/BasicForecaseService";
-import * as dayjs from "dayjs";
 import PeriodCard from "@/components/weather/PeriodCard.vue";
+import dayjs from "dayjs";
 
 export default {
   name: "ForecastData",
