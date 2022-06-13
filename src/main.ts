@@ -7,9 +7,10 @@ import {
   faAngleDown,
   faClock,
   faTemperatureHalf,
+  faGear,
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faPhone, faAngleDown, faClock, faTemperatureHalf);
+library.add(faPhone, faAngleDown, faClock, faTemperatureHalf, faGear);
 
 import App from "./App.vue";
 import router from "./router";

@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import BasicForecast from "@/components/weather/BasicForecast.vue";
+import SettingsEditor from "@/components/SettingsEditor.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,6 +15,11 @@ const router = createRouter({
       path: "/forecast",
       name: "forecast",
       component: BasicForecast,
+    },
+    {
+      path: "/settings",
+      name: "settings",
+      component: SettingsEditor,
     },
     // {
     //   path: "/about",

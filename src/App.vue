@@ -10,7 +10,7 @@ import NavBar from "@/components/NavBar.vue";
     <div class="hero-body">
       <div class="container">
         <p class="title">🥚 Eggy - Weather 🌤️</p>
-        <p class="subtitle" v-if="subtitle">{{ subtitle }}</p>
+        <!-- <p class="subtitle" v-if="subtitle">{{ subtitle }}</p> -->
       </div>
     </div>
   </section>

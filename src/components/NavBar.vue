@@ -30,6 +30,10 @@ import { RouterLink } from "vue-router";
       <div class="navbar-start">
         <RouterLink class="navbar-item" :to="'/'">Home</RouterLink>
         <RouterLink class="navbar-item" :to="'/forecast'">Forecast</RouterLink>
+        <RouterLink class="navbar-item" :to="'/settings'">
+          <font-awesome-icon icon="gear" />
+          Settings
+        </RouterLink>
       </div>
     </div>
   </nav>
